@@ -7,7 +7,6 @@ It allows the admin to manage truck order requests submitted by users in the mob
 - Update order status from the dashboard
 - See full order details in a modal
 - Send emails to users
-- Auto-refresh using Pusher
 
 
 ## Technologies Used
@@ -15,7 +14,6 @@ It allows the admin to manage truck order requests submitted by users in the mob
 - CSS (inline styles in JS)
 - Fetch API
 - Lottie (for simple icons/animations)
-- Pusher (for real-time notifications)
 
 
 ## How to run it
