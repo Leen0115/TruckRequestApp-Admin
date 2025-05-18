@@ -1,6 +1,6 @@
-
-
-This is the **Admin Dashboard** for the Truck Request App.
+# TruckRequestApp-Admin
+This is a simple admin dashboard built using React.js.  
+It allows the admin to manage truck order requests submitted by users in the mobile app.
 
 ## Features
 - View all user requests in a table
