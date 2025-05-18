@@ -13,12 +13,12 @@ export default function AdminDashboard() {
   const [hasNewNotification, setHasNewNotification] = useState(false);
 
   useEffect(() => {
-    fetch('http://192.168.8.229:8000/api/truck-requests')
+    fetch('http://192.168.8.51:8000/api/truck-requests')
       .then((response) => (response.ok ? response.json() : Promise.reject('Error fetching')))
       .then((data) => setOrders(data.data))
       .catch((error) => console.error('Fetch error:', error));
 
-    fetch('http://192.168.8.229:8000/api/notifications')
+    fetch('http://192.168.8.51:8000/api/notifications')
       .then((res) => res.json())
       .then((data) => {
         if (data.notifications && data.notifications.length > 0) {
@@ -30,13 +30,13 @@ export default function AdminDashboard() {
 
   const handleNotificationClick = async () => {
     try {
-      const response = await fetch('http://192.168.8.229:8000/api/notifications');
+      const response = await fetch('http://192.168.8.51:8000/api/notifications');
       const data = await response.json();
       if (data.notifications && data.notifications.length > 0) {
         const latest = data.notifications[0];
         alert(`New Order from ${latest.data?.user_name || 'Unknown User'} - Order ID: ${latest.data?.order_id}`);
         setHasNewNotification(false);
-        await fetch(`http://192.168.8.229:8000/api/notifications/${latest.id}`, {
+        await fetch(`http://192.168.8.51:8000/api/notifications/${latest.id}`, {
           method: 'DELETE',
         });
       } else {
@@ -49,7 +49,7 @@ export default function AdminDashboard() {
   };
 
   const sendEmail = () => {
-    fetch('http://192.168.8.229:8000/api/send-email', {
+    fetch('http://192.168.8.51:8000/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -187,7 +187,7 @@ export default function AdminDashboard() {
                       <button
                         style={styles.confirmBtn}
                         onClick={() => {
-                          fetch(`http://192.168.8.229:8000/api/truck-requests/${order.id}/update-status`, {
+                          fetch(`http://192.168.8.51:8000/api/truck-requests/${order.id}/update-status`, {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ status: newStatus }),})
